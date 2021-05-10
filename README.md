@@ -5,7 +5,7 @@ This project is using [Hardhat](https://hardhat.org/getting-started/) for develo
 ## Contracts
 
 * Binance Chain
-  * ORT : [<TOBEDEPLOYED>](https://bscscan.com/address/<TOBEDEPLOYED>)
+  * ORT : [0x1d64327C74d6519afeF54E58730aD6fc797f05Ba](https://bscscan.com/address/0x1d64327C74d6519afeF54E58730aD6fc797f05Ba)
 
 * Binance Test Chain
   * ORT : [0x5Ed78a73d29696f8B591ea30Ce73E93CcE9514eE](https://testnet.bscscan.com/address/0x5Ed78a73d29696f8B591ea30Ce73E93CcE9514eE)

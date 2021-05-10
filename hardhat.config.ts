@@ -30,6 +30,7 @@ const config: HardhatUserConfig = {
     bscmainnet: {
       url: "https://bsc-dataseed.binance.org/",
       chainId: 56,
+      gasPrice: 12000000000,
       accounts: [`0x${process.env.BSC_PRIVATE_KEY}`],
     },
     ganache: {

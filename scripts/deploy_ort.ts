@@ -10,7 +10,8 @@ const main = async() => {
   // const signer = ethers.provider.getSigner("0xCCD0C72BAA17f4d3217e6133739de63ff6F0b462"); // ganache
   const signer = ethers.provider.getSigner("0xD993af5263DcD70b6991fa31E1FE247f9cD3208F"); // bsc test and main
 
-  // const ort = new ethers.Contract("0x066Bd99080eC62FE0E28bA687A53aC00794c17b6", ORTAbi, signer) as ORT;
+  console.log("deploying ort with signer:", signer._address);
+  // const ort = new ethers.Contract("0x1d64327C74d6519afeF54E58730aD6fc797f05Ba", ORTAbi, signer) as ORT; // bsc test
   const ORT = await ethers.getContractFactory("ORT");
   const ort: ORT = await ORT.connect(signer).deploy() as ORT;
   await ort.deployed();
