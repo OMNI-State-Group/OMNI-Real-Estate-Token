@@ -23,7 +23,7 @@ const config: HardhatUserConfig = {
       // }
     },
     bsctestnet: {
-      url: "https://data-seed-prebsc-1-s2.binance.org:8545",
+      url: "https://data-seed-prebsc-1-s1.binance.org:8545",
       chainId: 97,
       accounts: [`0x${process.env.BSC_TEST_PRIVATE_KEY}`],
     },
@@ -44,7 +44,7 @@ const config: HardhatUserConfig = {
   },
   solidity: {
     compilers: [{ 
-      version: "0.8.4",
+      version: "0.8.10",
       settings: {
         optimizer: {
           enabled: true,
@@ -59,9 +59,13 @@ const config: HardhatUserConfig = {
     cache: "./cache",
     artifacts: "./artifacts"
   },
+  dependencyCompiler: {
+    paths: [
+    ],
+  },
   contractSizer: {
     alphaSort: false,
-    runOnCompile: false,
+    runOnCompile: true,
     disambiguatePaths: false,
   }  
 };

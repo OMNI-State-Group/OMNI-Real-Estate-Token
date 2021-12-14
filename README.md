@@ -6,9 +6,11 @@ This project is using [Hardhat](https://hardhat.org/getting-started/) for develo
 
 * Binance Chain
   * ORT : [0x1d64327C74d6519afeF54E58730aD6fc797f05Ba](https://bscscan.com/address/0x1d64327C74d6519afeF54E58730aD6fc797f05Ba)
+  * StakingPool : [0x6f40A3d0c89cFfdC8A1af212A019C220A295E9bB](https://bscscan.com/address/0x6f40A3d0c89cFfdC8A1af212A019C220A295E9bB)
 
 * Binance Test Chain
   * ORT : [0x5Ed78a73d29696f8B591ea30Ce73E93CcE9514eE](https://testnet.bscscan.com/address/0x5Ed78a73d29696f8B591ea30Ce73E93CcE9514eE)
+  * StakingPool : [0xb369c518dAe2388C264Ee14d704A96934F49a27F](https://testnet.bscscan.com/address/0xb369c518dAe2388C264Ee14d704A96934F49a27F)
 
 ## Compiling
 
