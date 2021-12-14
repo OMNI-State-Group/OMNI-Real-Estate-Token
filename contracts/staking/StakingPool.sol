@@ -44,6 +44,25 @@ contract StakingPool is
     staking[] public tokens_staking;
     mapping(address => uint256[]) public userStake;
 
+    event Invest(
+        address indexed user,
+        uint256 indexed lockId,
+        uint256 endDate,
+        uint256 duration,
+        uint256 amountStaked,
+        uint256 reward
+    );
+    event Withdraw(
+        address indexed user,
+        uint256 indexed lockId,
+        uint256 amountWithdrawn
+    );
+    event Claim(
+        address indexed user,
+        uint256 indexed lockId,
+        uint256 amountclaimed
+    );
+
     //initialize function
     function initialize(IORT _rewardToken, IERC20Upgradeable _stakeToken)
         public
@@ -103,7 +122,17 @@ contract StakingPool is
             )
         );
         //save array index in map
-        userStake[msg.sender].push(tokens_staking.length - 1);
+        uint256 lockId = tokens_staking.length - 1;
+        userStake[msg.sender].push(lockId);
+
+        emit Invest(
+            msg.sender,
+            lockId,
+            end_staking[msg.sender],
+            duration[msg.sender],
+            qty_ort,
+            check_reward
+        );
     }
 
     //get all stake ids  of user
@@ -115,6 +144,17 @@ contract StakingPool is
         return userStake[user];
     }
 
+    //withdraw and claim at once
+    function withdrawAndClaim(uint256 lockId)
+        external
+        nonReentrant
+        whenNotPaused
+        onlyStakeOwner(lockId)
+    {
+        _withdraw(lockId);
+        _claim(lockId);
+    }
+
     //withdraw function
     function withdraw_amount(uint256 lockId)
         external
@@ -122,6 +162,10 @@ contract StakingPool is
         whenNotPaused
         onlyStakeOwner(lockId)
     {
+        _withdraw(lockId);
+    }
+
+    function _withdraw(uint256 lockId) internal {
         require(tokens_staking[lockId].balances > 0, "not an investor");
         require(
             block.timestamp >= tokens_staking[lockId].end_staking,
@@ -136,6 +180,8 @@ contract StakingPool is
         tokens_staking[lockId].end_staking = 0;
         //transfer back amount to user
         stakeToken.safeTransfer(msg.sender, invested_balance);
+
+        emit Withdraw(msg.sender, lockId, invested_balance);
     }
 
     //Claim rewards
@@ -145,6 +191,10 @@ contract StakingPool is
         whenNotPaused
         onlyStakeOwner(lockId)
     {
+        _claim(lockId);
+    }
+
+    function _claim(uint256 lockId) internal {
         require(tokens_staking[lockId].check_claim > 0, "No Reward Available");
         require(
             tokens_staking[lockId].changeClaimed == false,
@@ -157,6 +207,8 @@ contract StakingPool is
         tokens_staking[lockId].check_claim = 0;
         //mint new ort token
         rewardToken.mint(msg.sender, claimed_amount);
+
+        emit Claim(msg.sender, lockId, claimed_amount);
     }
 
     //Total percent function
