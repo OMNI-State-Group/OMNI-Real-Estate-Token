@@ -231,51 +231,51 @@ contract StakingPool is
         //if user stakes token for 3 months
         if (durations == 3) {
             if (total_percent2 >= 10000 && total_percent2 < 40000) {
-                total_percent = _Percentage(balance, 750000000000000000);
+                total_percent = _Percentage(balance, 600000000000000000);
             } else if (total_percent2 >= 40000 && total_percent2 < 60000) {
-                total_percent = _Percentage(balance, 1500000000000000000);
+                total_percent = _Percentage(balance, 1200000000000000000);
             } else if (total_percent2 >= 60000 && total_percent2 < 80000) {
-                total_percent = _Percentage(balance, 2250000000000000000);
+                total_percent = _Percentage(balance, 1800000000000000000);
             } else if (total_percent2 >= 80000 && total_percent2 < 100000) {
-                total_percent = _Percentage(balance, 3000000000000000000);
+                total_percent = _Percentage(balance, 2400000000000000000);
             } else if (total_percent2 >= 100000) {
-                total_percent = _Percentage(balance, 3750000000000000000);
+                total_percent = _Percentage(balance, 3000000000000000000);
             }
         } else if (durations == 6) {
             if (total_percent2 >= 10000 && total_percent2 < 40000) {
-                total_percent = _Percentage(balance, 2000000000000000000);
+                total_percent = _Percentage(balance, 1600000000000000000);
             } else if (total_percent2 >= 40000 && total_percent2 < 60000) {
-                total_percent = _Percentage(balance, 4000000000000000000);
+                total_percent = _Percentage(balance, 3200000000000000000);
             } else if (total_percent2 >= 60000 && total_percent2 < 80000) {
-                total_percent = _Percentage(balance, 6000000000000000000);
+                total_percent = _Percentage(balance, 4800000000000000000);
             } else if (total_percent2 >= 80000 && total_percent2 < 100000) {
-                total_percent = _Percentage(balance, 8000000000000000000);
+                total_percent = _Percentage(balance, 6400000000000000000);
             } else if (total_percent2 >= 100000) {
-                total_percent = _Percentage(balance, 10000000000000000000);
+                total_percent = _Percentage(balance, 8000000000000000000);
             }
         } else if (durations == 12) {
             if (total_percent2 >= 10000 && total_percent2 < 40000) {
-                total_percent = _Percentage(balance, 5000000000000000000);
+                total_percent = _Percentage(balance, 4000000000000000000);
             } else if (total_percent2 >= 40000 && total_percent2 < 60000) {
-                total_percent = _Percentage(balance, 10000000000000000000);
+                total_percent = _Percentage(balance, 8000000000000000000);
             } else if (total_percent2 >= 60000 && total_percent2 < 80000) {
-                total_percent = _Percentage(balance, 15000000000000000000);
+                total_percent = _Percentage(balance, 12000000000000000000);
             } else if (total_percent2 >= 80000 && total_percent2 < 100000) {
-                total_percent = _Percentage(balance, 20000000000000000000);
+                total_percent = _Percentage(balance, 16000000000000000000);
             } else if (total_percent2 >= 100000) {
-                total_percent = _Percentage(balance, 25000000000000000000);
+                total_percent = _Percentage(balance, 20000000000000000000);
             }
         } else if (durations == 24) {
             if (total_percent2 >= 10000 && total_percent2 < 40000) {
-                total_percent = _Percentage(balance, 14000000000000000000);
+                total_percent = _Percentage(balance, 11200000000000000000);
             } else if (total_percent2 >= 40000 && total_percent2 < 60000) {
-                total_percent = _Percentage(balance, 28000000000000000000);
+                total_percent = _Percentage(balance, 22400000000000000000);
             } else if (total_percent2 >= 60000 && total_percent2 < 80000) {
-                total_percent = _Percentage(balance, 42000000000000000000);
+                total_percent = _Percentage(balance, 33600000000000000000);
             } else if (total_percent2 >= 80000 && total_percent2 < 100000) {
-                total_percent = _Percentage(balance, 56000000000000000000);
+                total_percent = _Percentage(balance, 44800000000000000000);
             } else if (total_percent2 >= 100000) {
-                total_percent = _Percentage(balance, 70000000000000000000);
+                total_percent = _Percentage(balance, 56000000000000000000);
             }
         }
         return total_percent;

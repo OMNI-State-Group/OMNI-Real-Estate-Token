@@ -1,7 +1,7 @@
-// npx hardhat run scripts/upgrades/20211214-eventsadded.ts
+// npx hardhat run scripts/upgrades/upgrade-staking.ts --network bscmainnet
 
 require("dotenv").config({path: `${__dirname}/.env`});
-import { ethers, upgrades } from "hardhat";
+import { run, ethers, upgrades, defender } from "hardhat";
 import { StakingPool } from "../../typechain";
 import StakingPoolAbi from "../../abi/contracts/staking/StakingPool.sol/StakingPool.json";
 
@@ -13,9 +13,16 @@ const main = async() => {
 
   // let stakingPool = new ethers.Contract("0xb369c518dAe2388C264Ee14d704A96934F49a27F", StakingPoolAbi, signer) as StakingPool; // bsc test
   let stakingPool = new ethers.Contract("0x6f40A3d0c89cFfdC8A1af212A019C220A295E9bB", StakingPoolAbi, signer) as StakingPool; // bsc main
-  const StakingPool = await ethers.getContractFactory("StakingPool");
-  stakingPool = await upgrades.upgradeProxy(stakingPool.address, StakingPool, { unsafeAllow: ['delegatecall'] }) as StakingPool;
-  console.log("StakingPool upgraded:", stakingPool.address);
+
+  // const StakingPool = await ethers.getContractFactory("StakingPool");
+  // console.log("Preparing StakingPool proposal...");
+  // const proposal = await defender.proposeUpgrade(stakingPool.address, StakingPool);
+  // console.log("StakingPool Upgrade proposal created at:", proposal.url);
+
+  const implAddress = await upgrades.erc1967.getImplementationAddress(stakingPool.address)
+  console.log("StakingPool implementation address:", implAddress)
+  await run("verify:verify", { address: implAddress, constructorArguments: [] })
+  console.log("StakingPool implementation verified")
 }
 
 main()
